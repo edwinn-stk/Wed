@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ana &amp; Luis — Wedding Celebration · Hostly</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root{--bg:#faf7f2;--card:#fff;--ink:#1f1a17;--body:#5b524b;--muted:#968b82;--line:#ece5dc;--brand:#e2574c;--brand2:#f2a65a;--ok:#2f9e6e;--chip:#f4eee6;}
+  *{box-sizing:border-box;} html,body{margin:0;}
+  body{font-family:"Inter",system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+  .nav{position:sticky;top:0;z-index:10;background:rgba(250,247,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav .in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:12px 16px;}
+  .logo{font-family:"Fraunces",serif;font-weight:700;font-size:1.35rem;letter-spacing:-.01em;display:flex;align-items:center;gap:8px;}
+  .logo i{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-style:normal;font-size:.95rem;}
+  .tabs{display:flex;gap:4px;margin-left:auto;}
+  .tabs button{background:none;border:none;font:inherit;font-weight:600;color:var(--body);padding:8px 12px;border-radius:999px;cursor:pointer;}
+  .tabs button.on{background:var(--ink);color:#fff;}
+  .wrap{max-width:760px;margin:0 auto;padding:18px 16px 70px;}
+  .view{display:none;} .view.on{display:block;}
+
+  /* event */
+  .cover{height:220px;border-radius:22px;background:
+    radial-gradient(circle at 20% 30%,#ffd9b8 0,transparent 45%),radial-gradient(circle at 80% 70%,#f6b7ae 0,transparent 50%),linear-gradient(135deg,#f7e3d0,#efc3b4);
+    display:grid;place-items:center;position:relative;overflow:hidden;}
+  .cover span{font-family:"Fraunces",serif;font-size:2.5rem;font-weight:700;color:#5a2e24;letter-spacing:-.02em;}
+  .cover small{position:absolute;bottom:14px;left:18px;background:rgba(255,255,255,.75);border-radius:999px;padding:5px 12px;font-size:.78rem;font-weight:600;color:#5a2e24;}
+  h1{font-family:"Fraunces",serif;font-size:1.9rem;margin:18px 0 6px;letter-spacing:-.01em;}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px;}
+  .chip{background:var(--chip);border-radius:999px;padding:7px 12px;font-size:.86rem;font-weight:500;color:var(--body);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px;}
+  .card h3{margin:0 0 8px;font-size:1rem;}
+  .card p{margin:0;color:var(--body);line-height:1.6;}
+  .inv{display:flex;align-items:center;gap:12px;}
+  .inv .tag{margin-left:auto;font-size:.76rem;font-weight:700;color:var(--brand);background:#fde9e6;border-radius:999px;padding:4px 10px;}
+  .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;flex:none;}
+  .going{display:flex;align-items:center;gap:10px;}
+  .stack{display:flex;} .stack .av{width:32px;height:32px;font-size:.72rem;border:2px solid #fff;margin-left:-8px;} .stack .av:first-child{margin-left:0;}
+  .rsvp-btn{width:100%;border:none;border-radius:16px;padding:16px;font:inherit;font-weight:700;font-size:1.05rem;color:#fff;background:linear-gradient(135deg,var(--brand),#d8443a);box-shadow:0 10px 24px rgba(226,87,76,.3);cursor:pointer;}
+  .done-banner{display:none;background:#e9f7f0;border:1px solid #bfe6d2;color:#1f6b4a;border-radius:16px;padding:14px 16px;font-weight:600;margin-bottom:14px;}
+
+  /* profile */
+  .phead{display:flex;gap:16px;align-items:center;margin-bottom:14px;}
+  .pav{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,#6b8cff,#a970ff);display:grid;place-items:center;color:#fff;font-family:"Fraunces",serif;font-size:2rem;font-weight:700;flex:none;}
+  .pname{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:700;}
+  .psub{color:var(--muted);font-size:.9rem;margin-top:2px;}
+  .kv{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .kv div{background:var(--chip);border-radius:12px;padding:10px 12px;}
+  .kv b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:3px;}
+  .kv span{font-size:.92rem;}
+  .qa{margin:0;padding:0;list-style:none;}
+  .qa li{padding:11px 0;border-bottom:1px solid var(--line);}
+  .qa li:last-child{border-bottom:none;}
+  .qa .q{font-size:.8rem;color:var(--muted);font-weight:600;}
+  .qa .a{color:var(--body);margin-top:3px;line-height:1.5;}
+  .pills{display:flex;flex-wrap:wrap;gap:6px;}
+  .pill{background:var(--chip);border-radius:999px;padding:5px 11px;font-size:.82rem;color:var(--body);}
+
+  /* modal */
+  .ov{position:fixed;inset:0;background:rgba(31,26,23,.45);display:none;align-items:flex-end;justify-content:center;z-index:30;padding:0;}
+  .ov.on{display:flex;}
+  .sheet{background:#fff;width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:22px 22px 0 0;padding:20px 20px 26px;}
+  @media(min-width:640px){.ov{align-items:center;padding:20px}.sheet{border-radius:22px;}}
+  .sheet h2{font-family:"Fraunces",serif;margin:0 0 4px;font-size:1.45rem;}
+  .sheet .sub{color:var(--muted);font-size:.88rem;margin:0 0 16px;}
+  .sec{border-top:1px solid var(--line);padding:14px 0;}
+  .sec>label,.sec .lbl{display:block;font-weight:700;font-size:.9rem;margin-bottom:9px;}
+  .seg{display:flex;gap:8px;}
+  .seg button{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:11px;font:inherit;font-weight:600;cursor:pointer;}
+  .seg button.on{border-color:var(--ink);background:var(--ink);color:#fff;}
+  .guest{display:flex;align-items:center;gap:10px;padding:8px 0;}
+  .guest input{width:18px;height:18px;accent-color:var(--ink);}
+  .guest .av{width:32px;height:32px;font-size:.75rem;}
+  select,textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;font:inherit;background:#fff;color:var(--ink);}
+  .meal{display:flex;justify-content:space-between;align-items:center;background:var(--chip);border-radius:12px;padding:11px 13px;margin-bottom:8px;font-size:.9rem;}
+  .meal .who{font-weight:600;} .meal .dish{color:var(--body);text-align:right;}
+  .meal .dish small{display:block;color:var(--muted);font-size:.76rem;}
+  .change{display:block;margin-top:6px;color:var(--brand);font-weight:600;font-size:.88rem;background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;}
+  .menu-edit{display:none;margin-top:12px;}
+  .menu-edit.on{display:block;}
+  .menu-edit .g{margin-bottom:12px;}
+  .menu-edit .g b{display:block;font-size:.84rem;margin-bottom:6px;}
+  .opt{display:flex;gap:9px;align-items:flex-start;padding:7px 0;font-size:.88rem;color:var(--body);}
+  .opt small{display:block;color:var(--muted);font-size:.76rem;}
+  .confirm{width:100%;border:none;border-radius:14px;padding:15px;font:inherit;font-weight:700;font-size:1rem;color:#fff;background:var(--ink);cursor:pointer;margin-top:10px;}
+  .confirm:disabled{opacity:.6;}
+  .x{float:right;background:var(--chip);border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:1rem;}
+</style>
+</head>
+<body>
+<div class="nav"><div class="in">
+  <div class="logo"><i>✦</i> Hostly</div>
+  <div class="tabs">
+    <button class="on" data-tab="event">Event</button>
+    <button data-tab="profile">My profile</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <!-- EVENT -->
+  <section class="view on" id="v-event">
+    <div class="done-banner" id="doneBanner"></div>
+    <div class="cover"><span>Ana &amp; Luis</span><small>💍 Wedding Celebration</small></div>
+    <h1>Ana &amp; Luis — Wedding Celebration</h1>
+    <div class="meta">
+      <span class="chip">📅 Sat, Dec 12 · 6:00 PM</span>
+      <span class="chip">📍 Hacienda Los Olivos</span>
+      <span class="chip">👔 Formal</span>
+      <span class="chip">⏳ RSVP by Dec 1</span>
+    </div>
+
+    <div class="card">
+      <div class="inv">
+        <div class="av" style="background:linear-gradient(135deg,#6b8cff,#a970ff)">TF</div>
+        <div><b>You're invited</b><div style="color:var(--muted);font-size:.88rem">Tomás Ferrer &amp; Valeria Quintana</div></div>
+        <span class="tag">Party of 2</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>From the hosts</h3>
+      <p>We can't wait to celebrate with you! Ceremony in the olive garden at 6, dinner and dancing to follow. Dinner is a seated three-course menu — you can pick your main when you RSVP. 💛 Ana &amp; Luis</p>
+    </div>
+
+    <div class="card">
+      <div class="going">
+        <div class="stack">
+          <div class="av" style="background:#e2574c">AM</div><div class="av" style="background:#f2a65a">LH</div>
+          <div class="av" style="background:#2f9e6e">DR</div><div class="av" style="background:#6b8cff">CS</div><div class="av" style="background:#a970ff">MP</div>
+        </div>
+        <div style="color:var(--body);font-size:.9rem"><b>42 going</b> · 9 maybe</div>
+      </div>
+    </div>
+
+    <button class="rsvp-btn" id="openRsvp">RSVP</button>
+  </section>
+
+  <!-- PROFILE (separate; not part of the RSVP flow) -->
+  <section class="view" id="v-profile">
+    <div class="phead">
+      <div class="pav">TF</div>
+      <div>
+        <div class="pname">Tomás Ferrer</div>
+        <div class="psub">@tomasferrer · Mexico City · Member since 2023</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>About</h3>
+      <div class="kv">
+        <div><b>Age</b><span>31</span></div>
+        <div><b>Pronouns</b><span>he/him</span></div>
+        <div><b>Hometown</b><span>Guadalajara, Jalisco</span></div>
+        <div><b>Lives in</b><span>Roma Norte, CDMX</span></div>
+        <div><b>Work</b><span>Product designer at a fintech</span></div>
+        <div><b>Studied</b><span>Industrial Design, ITESO</span></div>
+        <div><b>Birthday</b><span>March 14</span></div>
+        <div><b>Languages</b><span>Spanish, English, some Italian</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Interests</h3>
+      <div class="pills">
+        <span class="pill">🚴 Cycling</span><span class="pill">📷 Film photography</span><span class="pill">🍷 Natural wine</span>
+        <span class="pill">🎧 House music</span><span class="pill">🏔️ Hiking</span><span class="pill">🎲 Board games</span>
+        <span class="pill">🎬 A24 movies</span><span class="pill">☕ Specialty coffee</span><span class="pill">🧗 Climbing</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Get to know me</h3>
+      <ul class="qa">
+        <li><div class="q">Go-to karaoke song</div><div class="a">"Me Gustas Tú" — Manu Chao, every time.</div></li>
+        <li><div class="q">Best trip you've taken</div><div class="a">Two weeks cycling the coast of Oaxaca. Would do it again tomorrow.</div></li>
+        <li><div class="q">Ideal Saturday</div><div class="a">Morning ride, long lunch with friends, a movie at Cineteca, late dinner somewhere new.</div></li>
+        <li><div class="q">Currently reading</div><div class="a">"Pedro Páramo" (third re-read) and a book on typography.</div></li>
+        <li><div class="q">Anything hosts should know?</div><div class="a">Severe allergy to peanuts and sesame — I carry an EpiPen. Otherwise I'll eat anything!</div></li>
+        <li><div class="q">Favorite food spot in CDMX</div><div class="a">The tacos de canasta stand outside Metro Insurgentes.</div></li>
+        <li><div class="q">Party role</div><div class="a">The one who makes the playlist and ends up on dish duty.</div></li>
+        <li><div class="q">Hidden talent</div><div class="a">I can fix almost any bike with a multitool and zip ties.</div></li>
+        <li><div class="q">Pet peeve</div><div class="a">People who don't put their cart back at the supermarket.</div></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Socials</h3>
+      <div class="pills"><span class="pill">IG @tomas.f.photo</span><span class="pill">Strava · Tomás F.</span><span class="pill">Letterboxd @tferrer</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Events</h3>
+      <p>Attended 23 events · Hosted 4 · Recent: "Rooftop Cinema Night", "Sofía's 30th", "Day of the Dead dinner".</p>
+    </div>
+  </section>
+</div>
+
+<!-- RSVP SHEET -->
+<div class="ov" id="ov">
+  <div class="sheet">
+    <button class="x" id="closeRsvp" aria-label="Close">✕</button>
+    <h2>RSVP</h2>
+    <p class="sub">Ana &amp; Luis — Wedding Celebration · Sat, Dec 12</p>
+
+    <div class="sec">
+      <span class="lbl">Will you attend?</span>
+      <div class="seg" id="attSeg">
+        <button class="on" data-v="yes">Going</button><button data-v="maybe">Maybe</button><button data-v="no">Can't go</button>
+      </div>
+    </div>
+
+    <div class="sec">
+      <span class="lbl">Your party</span>
+      <div class="guest"><input type="checkbox" id="g1" checked><div class="av" style="background:linear-gradient(135deg,#6b8cff,#a970ff)">TF</div><div>Tomás Ferrer <span style="color:var(--muted);font-size:.82rem">(you)</span></div></div>
+      <div class="guest"><input type="checkbox" id="g2" checked><div class="av" style="background:#e58fb0">VQ</div><div>Valeria Quintana <span style="color:var(--muted);font-size:.82rem">(+1)</span></div></div>
+    </div>
+
+    <div class="sec">
+      <label for="seat">Seating preference</label>
+      <select id="seat">
+        <option selected>Garden terrace</option>
+        <option>Near the dance floor</option>
+        <option>Quiet corner</option>
+        <option>No preference</option>
+      </select>
+    </div>
+
+    <div class="sec">
+      <span class="lbl">Dinner</span>
+      <div id="mealSummary"></div>
+      <button class="change" id="changeMenu">Need a different menu? Allergies or dietary needs → Change menu</button>
+      <div class="menu-edit" id="menuEdit"></div>
+    </div>
+
+    <button class="confirm" id="confirmBtn">Confirm RSVP</button>
+  </div>
+</div>
+
+<script>
+  var $ = function(id){ return document.getElementById(id); };
+  function track(page){ try{ fetch("/api/track",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({page:page})}); }catch(e){} }
+  track("event");
+
+  // tabs
+  document.querySelectorAll(".tabs button").forEach(function(b){
+    b.addEventListener("click", function(){
+      document.querySelectorAll(".tabs button").forEach(function(x){x.classList.remove("on");}); b.classList.add("on");
+      var t=b.getAttribute("data-tab");
+      $("v-event").classList.toggle("on", t==="event"); $("v-profile").classList.toggle("on", t==="profile");
+      track(t);
+    });
+  });
+
+  // menu data
+  var DISHES = {
+    mole:    { name:"Mole poblano with chicken", note:"Chef's signature · contains peanuts, sesame" },
+    fish:    { name:"Grilled sea bass with herbs", note:"Gluten-free · nut-free" },
+    risotto: { name:"Wild mushroom risotto", note:"Vegetarian · contains dairy" }
+  };
+  var DEFAULT_DISH = "mole";
+  var guests = [
+    { id:"g1", name:"Tomás Ferrer", isUser:true,  dish:DEFAULT_DISH, touched:false },
+    { id:"g2", name:"Valeria Quintana", isUser:false, dish:DEFAULT_DISH, touched:false }
+  ];
+  var menuOpened = false, attending = "yes";
+
+  function activeGuests(){ return guests.filter(function(g){ return $(g.id).checked; }); }
+
+  function renderSummary(){
+    var h="";
+    activeGuests().forEach(function(g){
+      var d=DISHES[g.dish];
+      h+='<div class="meal"><span class="who">'+g.name.split(" ")[0]+'</span><span class="dish">'+d.name+'<small>'+d.note+'</small></span></div>';
+    });
+    $("mealSummary").innerHTML = h || '<div style="color:var(--muted);font-size:.88rem">No guests selected.</div>';
+  }
+
+  function renderEditor(){
+    var h="";
+    activeGuests().forEach(function(g){
+      h+='<div class="g"><b>'+g.name+'</b>';
+      Object.keys(DISHES).forEach(function(k){
+        h+='<label class="opt"><input type="radio" name="dish-'+g.id+'" value="'+k+'"'+(g.dish===k?" checked":"")+'><span>'+DISHES[k].name+'<small>'+DISHES[k].note+'</small></span></label>';
+      });
+      h+='</div>';
+    });
+    h+='<label class="opt" style="display:block"><span style="font-weight:600;color:var(--ink)">Dietary notes for the kitchen</span><textarea id="diet" rows="2" placeholder="Allergies, intolerances…"></textarea></label>';
+    $("menuEdit").innerHTML=h;
+    activeGuests().forEach(function(g){
+      document.querySelectorAll('input[name="dish-'+g.id+'"]').forEach(function(r){
+        r.addEventListener("change", function(){ g.dish=r.value; g.touched=true; renderSummary(); });
+      });
+    });
+  }
+
+  $("g1").addEventListener("change", function(){ renderSummary(); if(menuOpened) renderEditor(); });
+  $("g2").addEventListener("change", function(){ renderSummary(); if(menuOpened) renderEditor(); });
+
+  document.querySelectorAll("#attSeg button").forEach(function(b){
+    b.addEventListener("click", function(){
+      document.querySelectorAll("#attSeg button").forEach(function(x){x.classList.remove("on");}); b.classList.add("on");
+      attending=b.getAttribute("data-v");
+    });
+  });
+
+  $("changeMenu").addEventListener("click", function(){
+    menuOpened = !menuOpened; $("menuEdit").classList.toggle("on", menuOpened);
+    if(menuOpened){ renderEditor(); track("menu_editor"); }
+  });
+
+  $("openRsvp").addEventListener("click", function(){ renderSummary(); $("ov").classList.add("on"); track("rsvp_sheet"); });
+  $("closeRsvp").addEventListener("click", function(){ $("ov").classList.remove("on"); });
+
+  $("confirmBtn").addEventListener("click", function(){
+    var btn=this; btn.disabled=true; btn.textContent="Confirming…";
+    var payload = {
+      attending: attending==="yes",
+      seating: $("seat").value,
+      menuOpened: menuOpened,
+      dietaryNote: $("diet") ? $("diet").value : "",
+      guests: activeGuests().map(function(g){ return { name:g.name, isUser:g.isUser, dish:g.dish, dishWasDefault:!g.touched }; })
+    };
+    fetch("/api/rsvp",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(payload)})
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        $("ov").classList.remove("on");
+        var n = payload.guests.length;
+        $("doneBanner").textContent = attending==="yes"
+          ? "🎉 You're going! RSVP confirmed for "+n+(n===1?" guest":" guests")+" · Ref "+res.ref
+          : "RSVP sent · Ref "+res.ref;
+        $("doneBanner").style.display="block";
+        $("openRsvp").textContent="Edit RSVP";
+        btn.disabled=false; btn.textContent="Confirm RSVP";
+        window.scrollTo({top:0,behavior:"smooth"});
+      })
+      .catch(function(){ btn.disabled=false; btn.textContent="Couldn't confirm — try again"; });
+  });
+</script>
+</body>
+</html>
