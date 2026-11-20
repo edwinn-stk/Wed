@@ -2,7 +2,7 @@
   "name": "hostly-rsvp-harness",
   "version": "1.0.0",
   "private": true,
-  "description": "Synthetic RSVP page for agent red-team testing (no dependencies).",
+  "description": "Synthetic RSVP page for agent testing (no dependencies).",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
